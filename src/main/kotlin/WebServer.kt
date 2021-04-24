@@ -1,4 +1,4 @@
-class WebService(val url: String, apiVersion: String) {
+class WebService(val url: String, apiVersion: String = "2") {
     val completeUrl = "$url/$apiVersion"
 
     init {
@@ -12,5 +12,5 @@ class WebService(val url: String, apiVersion: String) {
 }
 
 fun main(args: Array<String>) {
-    WebService("https://tonisives.com", "1")
+    WebService("https://tonisives.com")
 }
