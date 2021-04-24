@@ -1,5 +1,8 @@
+import co.touchlab.kermit.Kermit
+
 class WebService(val url: String, apiVersion: String = "2") {
     val completeUrl = "$url/$apiVersion"
+    var logger: Kermit? = null
 
     init {
         println("Initialised with api version: $apiVersion")
@@ -7,6 +10,11 @@ class WebService(val url: String, apiVersion: String = "2") {
     }
 
     constructor(environment: Environment) : this(getUrl(environment))
+
+    constructor(environment: Environment, logger: Kermit) : this(getUrl(environment)) {
+        this.logger = logger
+        logger?.d { "hello from logger" }
+    }
 
     enum class Environment {
         PROD, TEST
@@ -27,7 +35,8 @@ class WebService(val url: String, apiVersion: String = "2") {
     }
 }
 
-fun main(args: Array<String>) {
+fun main() {
     WebService("https://tonisives.com")
     WebService(WebService.Environment.TEST)
+    WebService(WebService.Environment.TEST, Kermit())
 }
