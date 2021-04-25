@@ -41,11 +41,12 @@ fun main() {
     WebService(WebService.Environment.TEST, Kermit())
 }
 
-open class Parent(input: Int)
-
+open class Parent() {
+    constructor(input:Int) : this()
+}
 
 class Child : Parent {
-    constructor() : super(1) {
+    constructor() : super() {
         println("Child class initialised")
     }
 }
