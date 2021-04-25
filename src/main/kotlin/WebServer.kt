@@ -40,3 +40,17 @@ fun main() {
     WebService(WebService.Environment.TEST)
     WebService(WebService.Environment.TEST, Kermit())
 }
+
+open class Parent
+
+class Child : Parent {
+    constructor(input: Int) : super() {
+        println("Child class $input initialised")
+    }
+}
+
+class Child2(input: Int) : Parent() {
+    init {
+        println("Child class $input initialised")
+    }
+}
